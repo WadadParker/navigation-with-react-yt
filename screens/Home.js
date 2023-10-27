@@ -8,8 +8,8 @@ const Home = () =>
     return (
         <SafeAreaView>
             <View style={styles.container}>
-                <Text>Image is not rendering via link</Text>
-                {/* <Image source={{uri:imgLink}}/> */}
+               
+                <Image source={{uri:imgLink}} style={styles.image}/>
                 <TouchableOpacity style={styles.button}>
                     <Text style={styles.buttonText}>Upload Image</Text>
                 </TouchableOpacity>

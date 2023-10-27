@@ -6,8 +6,8 @@ const styles = StyleSheet.create({
       alignItems: 'center',
     },
     image: {
-      width: '90%',
-      height: '70%',
+      width: 400,
+      height: 400,
       resizeMode: 'cover',
     },
     button: {
