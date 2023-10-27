@@ -22,6 +22,13 @@ const styles = StyleSheet.create({
         color: 'white',
         fontSize: 16,
         fontWeight: 'bold',
+      },
+      camera: {
+        flex: 5,
+        borderRadius: 20,
+      },
+      topControls: {
+        flex: 1,
       }
   });
 

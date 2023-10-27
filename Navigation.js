@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./screens/Home";
 import AuthNavigation from "./AuthNavigation";
+import ImageFullScreen from "./screens/ImageFullScreen/ImageFullScreen";
 import { useData } from "./context/AppContext";
 
 import { Ionicons } from '@expo/vector-icons';
@@ -14,14 +15,7 @@ import { Foundation } from '@expo/vector-icons';
 
 const HomeStack = createNativeStackNavigator();
 
-const HomeStackGroup=()=>
-{
-    return (
-        <HomeStack.Navigator>
-            <HomeStack.Screen name="Board" component={Home} options={{headerShown:false}}/>
-        </HomeStack.Navigator>
-    )
-}
+
 
 // Below here is Tab Navigation, based on tabs, it will render those screens
 
@@ -56,12 +50,22 @@ const TabGroup=()=>
                 tabBarActiveTintColor:"#573AFF"
             })}
         >
-            <Tab.Screen name="Home" component={HomeStackGroup}/>
+            <Tab.Screen name="Home" component={Home}/>
             <Tab.Screen name="Chat" component={Home} />
             {isManager
             ?<Tab.Screen name="Reports" component={Home} />
             :<Tab.Screen name="Leaderboard" component={Home} />}
         </Tab.Navigator>
+    )
+}
+
+const HomeStackGroup=()=>
+{
+    return (
+        <HomeStack.Navigator>
+            <HomeStack.Screen name="Board" component={TabGroup} options={{headerShown:false}}/>
+            <HomeStack.Screen name="ImageFullScreen" component={ImageFullScreen}  options={{presentation:"fullScreenModal",headerShown:false}}/>
+        </HomeStack.Navigator>
     )
 }
 
@@ -72,7 +76,7 @@ const Navigation=()=>
     {
     return (
         <NavigationContainer>
-            <TabGroup />
+            <HomeStackGroup />
         </NavigationContainer>
     )}
     return <AuthNavigation />
