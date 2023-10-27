@@ -1,17 +1,35 @@
 import { NavigationContainer} from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import Home from "./screens/Home";
+import AuthNavigation from "./AuthNavigation";
+import { useData } from "./context/AppContext";
 
 import { Ionicons } from '@expo/vector-icons';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Foundation } from '@expo/vector-icons';
 
+// Stack, let's play UNO with our screens
+
+const HomeStack = createNativeStackNavigator();
+
+const HomeStackGroup=()=>
+{
+    return (
+        <HomeStack.Navigator>
+            <HomeStack.Screen name="Board" component={Home} options={{headerShown:false}}/>
+        </HomeStack.Navigator>
+    )
+}
+
+// Below here is Tab Navigation, based on tabs, it will render those screens
+
 const Tab = createBottomTabNavigator();
 
 const TabGroup=()=>
 {
-    const isManager=true;
+    const {state:{user:{isManager}}} = useData();
 
     return (
         <Tab.Navigator
@@ -34,10 +52,11 @@ const TabGroup=()=>
                         return <MaterialIcons name="leaderboard" size={size} color={color} />
                     }
                     return <Ionicons name={iconName} size={size} color={color}/>
-                }
+                },
+                tabBarActiveTintColor:"#573AFF"
             })}
         >
-            <Tab.Screen name="Home" component={Home}/>
+            <Tab.Screen name="Home" component={HomeStackGroup}/>
             <Tab.Screen name="Chat" component={Home} />
             {isManager
             ?<Tab.Screen name="Reports" component={Home} />
@@ -48,11 +67,15 @@ const TabGroup=()=>
 
 const Navigation=()=>
 {
+    const {authState:{isRegistered}} = useData();
+    if(isRegistered)
+    {
     return (
         <NavigationContainer>
             <TabGroup />
         </NavigationContainer>
-    )
+    )}
+    return <AuthNavigation />
 }
 
 export default Navigation;
