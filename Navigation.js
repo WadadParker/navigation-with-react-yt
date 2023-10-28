@@ -7,6 +7,7 @@ import Home from "./screens/Home";
 import AuthNavigation from "./AuthNavigation";
 import ImageFullScreen from "./screens/ImageFullScreen/ImageFullScreen";
 import TaskForm from "./screens/TaskStackScreen/normalTask/NormalTask";
+import RecurringTaskForm from "./screens/TaskStackScreen/recurringTask/RecurringTask";
 import { useData } from "./context/AppContext";
 
 import { Ionicons } from '@expo/vector-icons';
@@ -70,7 +71,7 @@ const TopTabGroup=()=>
     return (
     <TopTab.Navigator>
         <TopTab.Screen name="Single Task" component={TaskForm} />
-        <TopTab.Screen name="Recurring Task" component={TaskForm} />
+        <TopTab.Screen name="Recurring Task" component={RecurringTaskForm} />
     </TopTab.Navigator>
     )
 }
