@@ -37,3 +37,34 @@ export const createOrganization = async(organizationDetails,authDispatch)=>
         console.log(error);
     }
 }
+
+export const getAllUsers = async(dispatch)=>
+{
+    try{
+        const response = await fetch(`${API_BASE_URL}/users`);
+        const data = await response.json();
+        dispatch({type:"FETCH_EMPLOYEES",payload:data});
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+}
+
+export const createTask = async(taskDetails)=>
+{
+    console.log(taskDetails);
+    try{
+        const response = await fetch(`${API_BASE_URL}/tasks`,{
+            method:"POST",
+            headers:{
+                'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(taskDetails)
+        })
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+}

@@ -1,10 +1,12 @@
 import { NavigationContainer} from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 
 import Home from "./screens/Home";
 import AuthNavigation from "./AuthNavigation";
 import ImageFullScreen from "./screens/ImageFullScreen/ImageFullScreen";
+import TaskForm from "./screens/TaskStackScreen/normalTask/NormalTask";
 import { useData } from "./context/AppContext";
 
 import { Ionicons } from '@expo/vector-icons';
@@ -59,12 +61,27 @@ const TabGroup=()=>
     )
 }
 
+// Top tabs
+
+const TopTab = createMaterialTopTabNavigator();
+
+const TopTabGroup=()=>
+{
+    return (
+    <TopTab.Navigator>
+        <TopTab.Screen name="Single Task" component={TaskForm} />
+        <TopTab.Screen name="Recurring Task" component={TaskForm} />
+    </TopTab.Navigator>
+    )
+}
+
 const HomeStackGroup=()=>
 {
     return (
         <HomeStack.Navigator>
             <HomeStack.Screen name="Board" component={TabGroup} options={{headerShown:false}}/>
             <HomeStack.Screen name="ImageFullScreen" component={ImageFullScreen}  options={{presentation:"fullScreenModal",headerShown:false}}/>
+            <HomeStack.Screen name="Task" component={TopTabGroup} />
         </HomeStack.Navigator>
     )
 }

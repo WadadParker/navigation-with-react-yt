@@ -7,6 +7,8 @@ import { useNavigation } from '@react-navigation/native';
 import styles from "./home.style";
 
 import * as ImagePicker from 'expo-image-picker';
+import { Ionicons } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 const Home = () => {
   const imgLink = 'https://geeksretreat.files.wordpress.com/2013/09/css3-message-board-with-sticky-notes.png';
@@ -50,8 +52,12 @@ const Home = () => {
           <Image source={{ uri: selectedImage || imgLink }} style={styles.image} />
         </TouchableOpacity>
 
+        <TouchableOpacity style={styles.addTaskButton} onPress={()=>navigation.navigate("Task")}>
+          <Entypo name="new-message" size={24} color="white" />
+        </TouchableOpacity>
+
         <TouchableOpacity style={styles.button} onPress={pickImage}>
-          <Text style={styles.buttonText}>Upload Image</Text>
+        <Ionicons name="ios-image-outline" size={24} color="white" />
         </TouchableOpacity>
       </View>
     </SafeAreaView>

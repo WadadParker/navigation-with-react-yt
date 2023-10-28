@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
       position: 'absolute',
       top:620,
       right:10,
-      backgroundColor: 'blue',
+      backgroundColor: '#573AFF',
       padding: 10,
       borderRadius: 10,
     },
@@ -23,6 +23,14 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
       },
+    addTaskButton:{
+      position: 'absolute',
+      top:560,
+      right:10,
+      backgroundColor: '#573AFF',
+      padding: 10,
+      borderRadius: 10,
+    },  
       camera: {
         flex: 5,
         borderRadius: 20,
