@@ -14,6 +14,8 @@ To use the app, follow these steps:
 4. Run `npm start`.
 5. Install Expo Go on your Android device to scan the QR Code and run the app on your mobile in development mode.
 
+[Product Demo Video](https://drive.google.com/drive/folders/1F6IMkpjFWT9KF_yAvmWXCrTRwQGFslgC?usp=sharing)
+
 ## Screenshots
 
 1. **Registration Page**
